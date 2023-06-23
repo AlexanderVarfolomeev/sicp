@@ -19,7 +19,8 @@
 
 (define (square n)
   (* n n))
-(define (even? a) (= 0 (remainder a 2)))
+(define (even? a)
+  (= 0 (remainder a 2)))
 
 (define (smallest-divisor n)
   (find-divisor n 2))
@@ -33,7 +34,7 @@
 (define (divides? a b)
   (= (remainder b a) 0))
 
-(define (prime? n)  
+(define (prime? n)
   (= n (smallest-divisor n)))
 
 (define (next n)

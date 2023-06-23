@@ -7,17 +7,18 @@
 
 
 (define (sum term a next b)
-    (define (iter a result)
-        (if (> a b)
-            result
-            (iter (next a) (+ (term a) result))))
-    (iter a 0))
+  (define (iter a result)
+    (if (> a b) result (iter (next a) (+ (term a) result))))
+  (iter a 0))
 
-(define (inc n) (+ n 1))
+(define (inc n)
+  (+ n 1))
 
-(define (cube x) (* x x x))
+(define (cube x)
+  (* x x x))
 
-(define (identity x) x)
+(define (identity x)
+  x)
 
 (check-equal? (sum cube 0 inc 2) 9)
 
