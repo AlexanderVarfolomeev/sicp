@@ -22,6 +22,26 @@
     (if (or (= (upper-bound y) 0) (= (lower-bound y) 0)) (error "division by zero")
         (mul-interval x (make-interval (/ 1.0 (upper-bound y)) (/ 1.0 (lower-bound y))))))
 
+;;; (define (width interval) (/ (- (upper-bound-bound interval) (lower-bound interval)) 2))
 
+(define (make-center-width c w)
+  (make-interval (- c w) (+ c w)))
 
-(define (width interval) (/ (- (upper-bound-bound interval) (lower-bound interval)) 2))
+(define (center i)
+  (/ (+ (lower-bound i) (upper-bound i)) 2))
+
+(define (width i)
+  (/ (- (upper-bound i) (lower-bound i)) 2))
+
+(define (make-center-percent c p)
+  (let  (
+    (err (*  (/ c 100) p))
+    )
+  (make-interval (- c err) (+ c err))))
+
+(define (percent interval) 
+  (-
+    100
+    (/
+      (lower-bound interval)
+      (/ (center interval) 100))))
